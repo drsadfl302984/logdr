@@ -12,7 +12,7 @@ import os
 
 
 def get_log_events(log_group, stream_name=None, stream_prefix=None, start_time=None, end_time=None):
-    client = boto3.client('logs', region_name='us-east-1')
+    client = boto3.client('logs')
     if stream_name is None and stream_prefix is None:
         print("both stream name and prefix can't be None")
         return
@@ -69,7 +69,7 @@ def download_log(fname, stream_name=None, stream_prefix=None,
 
 
 def download_all_logs(pathprefix, log_group, not_older_than=None, older_than=None, force = False):
-    client = boto3.client('logs', region_name='us-east-1')
+    client = boto3.client('logs')
 
     lower_timestamp = iso_to_timestamp(not_older_than)
     upper_timestamp = iso_to_timestamp(older_than)
